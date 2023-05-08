@@ -3,7 +3,7 @@ variable "org_name" {
 }
 
 variable "workspaces" {
-  description = "List of project names you want to create"
+  description = "List of workspace object names you want to create {name = \"workspace name\", project= \"project name\", exec_mode = \"allowed remote modes\", auto_apply = \"true or false\"}"
   type = list(
     object(
       {
