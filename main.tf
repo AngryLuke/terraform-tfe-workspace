@@ -12,14 +12,14 @@ provider "tfe" {
 }
 
 locals {
-    # list with projects name to fetch projects id
-    projects_name_list = [ for r in var.workspaces : r.project]
-} 
+  # list with projects name to fetch projects id
+  projects_name_list = [for r in var.workspaces : r.project]
+}
 
 data "tfe_project" "project_ids" {
-    for_each = toset([ for r in var.workspaces : r.project])
-    name = each.key
-    organization = var.org_name
+  for_each     = toset([for r in var.workspaces : r.project])
+  name         = each.key
+  organization = var.org_name
 }
 
 resource "tfe_workspace" "new" {
